@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+package auth;
+
+option go_package = "github.com/waves2k/e-commerce-protos/auth/v1; authv1";
+
+service AuthService {
+    rpc Register(RegisterRequest) returns (RegisterResponse);
+    rpc Login(LoginRequest) returns (LoginResponse);
+}
+
+message LoginRequest {
+  string email = 1 [ json_name = "email" ] ;
+  string password = 2 [ json_name = "password" ] ;
+}
+
+message LoginResponse {
+  string access_token = 1 [ json_name = "access_token" ];
+}
+
+message RegisterRequest {
+  string email = 1 [ json_name = "email" ] ;
+  string password = 2 [ json_name = "password" ] ;
+
+}
+
+message RegisterResponse {
+    string userID = 1 [ json_name = "user_id" ] ;
+}
+
