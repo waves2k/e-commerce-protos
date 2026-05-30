@@ -119,8 +119,10 @@ func (x *LoginResponse) GetAccessToken() string {
 
 type RegisterRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Email         string                 `protobuf:"bytes,1,opt,name=email,proto3" json:"email,omitempty"`
-	Password      string                 `protobuf:"bytes,2,opt,name=password,proto3" json:"password,omitempty"`
+	FirstName     string                 `protobuf:"bytes,1,opt,name=first_name,proto3" json:"first_name,omitempty"`
+	LastName      string                 `protobuf:"bytes,2,opt,name=last_name,proto3" json:"last_name,omitempty"`
+	Email         string                 `protobuf:"bytes,3,opt,name=email,proto3" json:"email,omitempty"`
+	Password      string                 `protobuf:"bytes,4,opt,name=password,proto3" json:"password,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -153,6 +155,20 @@ func (x *RegisterRequest) ProtoReflect() protoreflect.Message {
 // Deprecated: Use RegisterRequest.ProtoReflect.Descriptor instead.
 func (*RegisterRequest) Descriptor() ([]byte, []int) {
 	return file_auth_auth_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *RegisterRequest) GetFirstName() string {
+	if x != nil {
+		return x.FirstName
+	}
+	return ""
+}
+
+func (x *RegisterRequest) GetLastName() string {
+	if x != nil {
+		return x.LastName
+	}
+	return ""
 }
 
 func (x *RegisterRequest) GetEmail() string {
@@ -222,10 +238,14 @@ const file_auth_auth_proto_rawDesc = "" +
 	"\x05email\x18\x01 \x01(\tR\x05email\x12\x1a\n" +
 	"\bpassword\x18\x02 \x01(\tR\bpassword\"3\n" +
 	"\rLoginResponse\x12\"\n" +
-	"\faccess_token\x18\x01 \x01(\tR\faccess_token\"C\n" +
-	"\x0fRegisterRequest\x12\x14\n" +
-	"\x05email\x18\x01 \x01(\tR\x05email\x12\x1a\n" +
-	"\bpassword\x18\x02 \x01(\tR\bpassword\"+\n" +
+	"\faccess_token\x18\x01 \x01(\tR\faccess_token\"\x81\x01\n" +
+	"\x0fRegisterRequest\x12\x1e\n" +
+	"\n" +
+	"first_name\x18\x01 \x01(\tR\n" +
+	"first_name\x12\x1c\n" +
+	"\tlast_name\x18\x02 \x01(\tR\tlast_name\x12\x14\n" +
+	"\x05email\x18\x03 \x01(\tR\x05email\x12\x1a\n" +
+	"\bpassword\x18\x04 \x01(\tR\bpassword\"+\n" +
 	"\x10RegisterResponse\x12\x17\n" +
 	"\x06userID\x18\x01 \x01(\tR\auser_id2z\n" +
 	"\vAuthService\x129\n" +
